@@ -34,18 +34,23 @@ DEFAULT_APP_DIR_NAME = "flaskapp"               # change if you used different f
 
 # ---------- helpers ----------
 def tf_output():
+    app_ip = os.environ.get("APP_VM_IP")
+    web_ip = os.environ.get("WEB_VM_IP")
+
+    if app_ip and web_ip:
+        print("Using IPs from environment variables...")
+        return {
+            "app_public_ip": {"value": app_ip},
+            "web_public_ip": {"value": web_ip},
+        }
     try:
         out = subprocess.check_output(
             ["terraform", "output", "-json"], cwd=TF_DIR
         )
         return json.loads(out)
-    except subprocess.CalledProcessError:
-        print("Terraform output failed, falling back to environment variables...")
-        return {
-            "app_public_ip": {"value": os.environ.get("APP_VM_IP")},
-            "web_public_ip": {"value": os.environ.get("WEB_VM_IP")},
-        }
-
+    except subprocess.CalledProcessError as e:
+        print("Terraform output failed:", e)
+        raise RuntimeError("Could not determine VM IPs from env or Terraform.")
 def load_private_key(path):
     from paramiko import Ed25519Key, RSAKey, ECDSAKey
     path = str(path)
