@@ -47,9 +47,11 @@ jobs:
           ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
 
       - name: Run deploy tool
-        run: python devops_tools.py deploy
+        working-directory: terraform
+        run: python ../devops_tools.py deploy
         env:
           APP_VM_IP: ${{ secrets.APP_VM_IP }}
           WEB_VM_IP: ${{ secrets.WEB_VM_IP }}
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           SSH_USER: devcloud
+
