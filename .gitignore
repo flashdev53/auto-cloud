@@ -1,7 +1,10 @@
 __pycache__/
 *.pyc
+venv/
+venv]/
 .venv/
-.env
+.venv]/
+.env/
 
 .terraform/
 *.tfstate
