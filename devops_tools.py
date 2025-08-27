@@ -42,6 +42,7 @@ DEFAULT_APP_DIR_NAME = "flaskapp"
 def tf_output():
     app_ip = os.environ.get("APP_VM_IP")
     web_ip = os.environ.get("WEB_VM_IP")
+    app_private_ip = os.environ.get("APP_PRIVATE_IP")
 
     if not app_ip or not web_ip:
         raise RuntimeError("Missing APP_VM_IP or WEB_VM_IP in environment!")
@@ -49,6 +50,7 @@ def tf_output():
     return {
         "app_public_ip": {"value": app_ip},
         "web_public_ip": {"value": web_ip},
+        "app_private_ip": {"value": app_private_ip},
     }
 
 
