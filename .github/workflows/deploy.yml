@@ -52,6 +52,7 @@ jobs:
         env:
           APP_VM_IP: ${{ secrets.APP_VM_IP }}
           WEB_VM_IP: ${{ secrets.WEB_VM_IP }}
+          APP_PRIVATE_IP: ${{ secrets.APP_PRIVATE_IP }}
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           SSH_USER: devcloud
           ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
