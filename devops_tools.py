@@ -39,27 +39,17 @@ DEFAULT_APP_DIR_NAME = "flaskapp"
 # ----------------------------
 # Terraform Helpers
 # ----------------------------
-def tf_output() -> dict:
-    """Fetch Terraform outputs or fallback to env vars."""
+def tf_output():
     app_ip = os.environ.get("APP_VM_IP")
     web_ip = os.environ.get("WEB_VM_IP")
-    app_priv_ip = os.environ.get("APP_PRIVATE_IP")
 
-    if app_ip and web_ip and app_priv_ip:
-        print("ℹ️  Using IPs from environment variables")
-        return {
-            "app_public_ip": {"value": app_ip},
-            "web_public_ip": {"value": web_ip},
-            "app_private_ip": {"value": app_priv_ip},
-        }
+    if not app_ip or not web_ip:
+        raise RuntimeError("Missing APP_VM_IP or WEB_VM_IP in environment!")
 
-    try:
-        out = subprocess.check_output(
-            ["terraform", "output", "-json"], cwd=TF_DIR
-        )
-        return json.loads(out)
-    except subprocess.CalledProcessError as e:
-        raise click.ClickException(f"Terraform output failed: {e}")
+    return {
+        "app_public_ip": {"value": app_ip},
+        "web_public_ip": {"value": web_ip},
+    }
 
 
 # ----------------------------
