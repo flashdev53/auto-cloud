@@ -46,6 +46,10 @@ jobs:
           ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
           ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
 
+      - name: Debug Terraform output
+        working-directory: terraform
+        run: terraform output -json
+        
       - name: Run deploy tool
         working-directory: terraform
         run: python ../devops_tools.py deploy
