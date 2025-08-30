@@ -86,7 +86,7 @@ This project gives you a **real-world DevOps lab** to practice:
 ---
 
 ## 📂 Project Structure
-
+```bash
 .
 ├── app/                  # Application code (your web/app services)
 │   └── requirements.txt  # Python dependencies
@@ -98,8 +98,7 @@ This project gives you a **real-world DevOps lab** to practice:
 ├── .github/workflows/    # GitHub Actions CI/CD workflows
 │   └── deploy.yml
 └── README.md             # Project documentation
-
-
+```
 ---
 
 ## Secrets Configuration
