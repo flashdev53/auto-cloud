@@ -191,7 +191,6 @@ def deploy_web_vm(web_ip, app_private_ip, admin_user, key_path, port):
 def cli():
     pass
 
-
 @cli.command()
 @click.option("--ssh-key", default=DEFAULT_KEY, help="Path to SSH private key")
 @click.option("--admin-user", default=DEFAULT_USER, help="Admin username on VMs")
