@@ -85,19 +85,19 @@ This project gives you a **real-world DevOps lab** to practice:
 
 ---
 
-## Project Structure
+## 📂 Project Structure
 
 .
-├── app/ # Application code (your web/app services)
-│ └── requirements.txt # Python dependencies
-├── terraform/ # Terraform IaC configurations
-│ ├── main.tf # Core infra definition
-│ ├── variables.tf # Configurable inputs
-│ └── outputs.tf # Exported values (VM IPs)
-├── devops_tools.py # Python deployment + orchestration script
-├── .github/workflows/ # GitHub Actions CI/CD workflows
-│ └── deploy.yml
-└── README.md # Project documentation
+├── app/                  # Application code (your web/app services)
+│   └── requirements.txt  # Python dependencies
+├── terraform/            # Terraform IaC configurations
+│   ├── main.tf           # Core infra definition
+│   ├── variables.tf      # Configurable inputs
+│   └── outputs.tf        # Exported values (VM IPs)
+├── devops_tools.py       # Python deployment + orchestration script
+├── .github/workflows/    # GitHub Actions CI/CD workflows
+│   └── deploy.yml
+└── README.md             # Project documentation
 
 
 ---
