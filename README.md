@@ -6,7 +6,8 @@ This project is an **end-to-end cloud automation toolkit** that provisions infra
 - **Python automation** (`devops_tools.py`) for deployment and orchestration  
 - **GitHub Actions** for CI/CD pipeline  
 
-It is designed to give **Cloud Engineers / DevOps Engineers** a practical foundation in real-world workflows combining IaC, automation, and CI/CD.
+**Terraform** to provision the infrastructure, created **Jinja2 templates** for configuring Nginx and Gunicorn, and  **Python automation script** (`devops_tools.py`) to handle deployments. **CI/CD pipeline with GitHub Actions**, which automatically deploys the application using environment secrets for VM IPs and credentials.  
+
 
 ---
 
@@ -88,16 +89,21 @@ This project gives you a **real-world DevOps lab** to practice:
 ## 📂 Project Structure
 ```bash
 .
-├── app/                  # Application code (your web/app services)
-│   └── requirements.txt  # Python dependencies
-├── terraform/            # Terraform IaC configurations
-│   ├── main.tf           # Core infra definition
-│   ├── variables.tf      # Configurable inputs
-│   └── outputs.tf        # Exported values (VM IPs)
-├── devops_tools.py       # Python deployment + orchestration script
-├── .github/workflows/    # GitHub Actions CI/CD workflows
-│   └── deploy.yml
-└── README.md             # Project documentation
+├── app/                       
+    └── app.py                 # Application code (your web/app services)
+│   └── requirements.txt       # Python dependencies
+├── terraform/                 # Terraform IaC configurations
+│   ├── main.tf                # Core infra definition
+│   ├── variables.tf           # Configurable inputs
+│   └── outputs.tf             # Exported values (VM IPs)
+├── deploy/                    # Deployment templates & scripts
+│   ├── gunicorn.service.j2    # Systemd service for Gunicorn
+│   └── nginx.conf.j2          # Nginx reverse proxy config
+├── devops_tools.py            # Python deployment + orchestration script
+├── .github/workflows/         # GitHub Actions CI/CD workflows
+│   └── deploy.yml             # CI/CD pipeline for provisioning + deployment
+└── README.md                  # Project documentation
+
 ```
 ---
 
