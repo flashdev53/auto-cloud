@@ -174,16 +174,6 @@ python ../devops_tools.py deploy
 
 - App accessible via APP_VM_IP + WEB_VM_IP
 
-## Roadmap
-
- Add automatic Terraform → Secrets sync
-
- Add monitoring (Prometheus + Grafana)
-
- Add staging & production environments
-
- Dockerize app + orchestrate with Kubernetes
-
 ## 🤝 Contributing
 
 Fork the repo
@@ -191,5 +181,6 @@ Fork the repo
 Create a feature branch
 
 Commit changes
+
 
 Open a PR 
